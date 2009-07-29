@@ -1,0 +1,4 @@
+include MANIFEST.in README setup.cfg
+include GNU_LGPL_v2 COPYRIGHTS
+recursive-include demo/ *.*
+recursive-include demo/cursors/ *
