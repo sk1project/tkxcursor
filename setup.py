@@ -2,7 +2,7 @@
 #
 # Setup script for tkXcursor
 #
-# Copyright (C) 2009 Igor E. Novikov
+# Copyright (c) 2009 Igor E. Novikov
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 			license = 'LGPL v2',
 			url = 'http://sk1project.org',
 			download_url = 'http://sk1project.org/modules.php?name=Products',
-			long_description = '''tkXcursor is a python extention which provides custom RGBA/animated cursor management for Tkinter widgets. sK1 Team (http://sk1project.org), copyright (C) 2009 by Igor E. Novikov.
+			long_description = '''tkXcursor is a python extention which provides custom RGBA/animated cursor management for Tkinter widgets. sK1 Team (http://sk1project.org), copyright (c) 2009 by Igor E. Novikov.
 			''',
 		classifiers=[
 			'Development Status :: 5 - Stable',

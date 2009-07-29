@@ -4,7 +4,7 @@
 # tkXcursor -  RGBA/animated cursor management extension 
 #for Tkinter widgets under X.org
 
-#Copyright (C) 2009 by Igor E.Novikov
+#Copyright (c) 2009 by Igor E.Novikov
 #
 #This library is free software; you can redistribute it and/or
 #modify it under the terms of the GNU Library General Public
