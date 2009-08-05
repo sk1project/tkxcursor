@@ -24,6 +24,32 @@
 #include <Python.h>
 
 static
+PyObject * tkXcursor_IsSupportedARGB(PyObject * self, PyObject * args)
+{
+	char * tkwin_name;
+	PyObject * interpaddr;
+	Tcl_Interp * interp;
+	Tk_Window	tkwin;
+	Display * display;
+
+	if (!PyArg_ParseTuple(args, "sO", &tkwin_name, &interpaddr))
+	return NULL;
+	
+	interp = (Tcl_Interp*)PyInt_AsLong(interpaddr);
+
+	tkwin = Tk_NameToWindow(interp, tkwin_name, (ClientData)Tk_MainWindow(interp));
+	if (!tkwin)
+	{
+		PyErr_SetString(PyExc_ValueError, Tcl_GetStringResult(interp));
+		return NULL;
+	}
+
+	display = Tk_Display(tkwin);
+
+return PyInt_FromLong (XcursorSupportsARGB(display));
+}
+
+static
 PyObject * tkXcursor_FilenameLoadCursor(PyObject * self, PyObject * args)
 {
 	char * filename;
@@ -41,7 +67,7 @@ PyObject * tkXcursor_FilenameLoadCursor(PyObject * self, PyObject * args)
 	tkwin = Tk_NameToWindow(interp, tkwin_name, (ClientData)Tk_MainWindow(interp));
 	if (!tkwin)
 	{
-		PyErr_SetString(PyExc_ValueError, interp->result);
+		PyErr_SetString(PyExc_ValueError, Tcl_GetStringResult(interp));
 		return NULL;
 	}
 
@@ -71,7 +97,7 @@ PyObject * tkXcursor_SetCursorByXID(PyObject * self, PyObject * args)
 	tkwin = Tk_NameToWindow(interp, tkwin_name, (ClientData)Tk_MainWindow(interp));
 	if (!tkwin)
 	{
-		PyErr_SetString(PyExc_ValueError, interp->result);
+		PyErr_SetString(PyExc_ValueError, Tcl_GetStringResult(interp));
 		return NULL;
 	}
 
@@ -87,6 +113,7 @@ PyObject * tkXcursor_SetCursorByXID(PyObject * self, PyObject * args)
 
 static
 PyMethodDef tkXcursor_methods[] = {
+	{"IsSupportedARGB", tkXcursor_IsSupportedARGB, METH_VARARGS},
 	{"FilenameLoadCursor", tkXcursor_FilenameLoadCursor, METH_VARARGS},
 	{"SetCursor", tkXcursor_SetCursorByXID, METH_VARARGS},
 	{NULL, NULL}

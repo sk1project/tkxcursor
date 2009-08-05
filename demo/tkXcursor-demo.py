@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2003-2006 by Igor E. Novikov
+# Copyright (C) 2009 by Igor E. Novikov
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -34,9 +34,10 @@ def loadCursors(widget, path):
 		
 def setCursors(*args):
 	i=0
-	for frame in frames:
-		tkXcursor.set_cursor(frame, cursors[i])
-		i+=1
+	if tkXcursor.is_xcursor_supported(root):
+		for frame in frames:
+			tkXcursor.set_cursor(frame, cursors[i])
+			i+=1
 
 
 root=Tkinter.Tk()
@@ -50,8 +51,8 @@ for cursor in cursors:
 	frame.pack(side="top", padx=5, pady=5)
 	frames.append(frame)
 
-#Please note we works directly with X11 server so cursor should be setted 
-#only after widget exposing on screen. If you will try setting cursor 
+#Please note we works directly with X11 server so ARGB cursor should be 
+#applied only after widget exposing on screen. If you will try setting cursor 
 #before widget exposing i.e. before real widget creation on X server side 
 #you will get BadWindow exception and your application will be terminated
 frames[-1].bind('<Visibility>',setCursors)

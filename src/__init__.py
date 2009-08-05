@@ -23,6 +23,17 @@
 import os
 import _tkXcursor
 
+def is_xcursor_supported(widget):
+	"""
+	Checks is ARGB/animated cursor supported in the system.
+	
+	RETURN VALUE
+	the function returns true/false depending on ARGB/animated cursor system support.
+	"""
+	if _tkXcursor.IsSupportedARGB(widget._w, widget.tk.interpaddr()):
+		return True
+	return False
+
 def load_cursor(widget, filename):
 	"""Loads custom RGBA/animated Xcursor from resource file
 	
