@@ -23,6 +23,9 @@
 import os
 import _tkXcursor
 
+class tkXcursorError(Exception):
+    pass
+
 def is_xcursor_supported(widget):
 	"""
 	Checks is ARGB/animated cursor supported in the system.
@@ -45,7 +48,7 @@ def load_cursor(widget, filename):
 	the function returns integer value which corresponds cursor XID on X11 side
 	"""
 	if not os.path.isfile(filename):
-		raise FileNotFound('Xcursor resource file is missing: '+filename)
+		raise tkXcursorError('Xcursor resource file is missing: '+filename)
 	return _tkXcursor.FilenameLoadCursor(widget._w, widget.tk.interpaddr(), filename)
 
 def set_cursor(widget, cursor_id):
