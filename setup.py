@@ -68,8 +68,8 @@ if __name__ == "__main__":
 			maintainer = 'Igor E. Novikov',
 			maintainer_email = 'igor.e.novikov@gmail.com',
 			license = 'LGPL v2',
-			url = 'http://sk1project.org',
-			download_url = 'http://sk1project.org/',
+			url = 'http://sk1project.net',
+			download_url = 'http://sk1project.net/',
 			long_description = '''tkXcursor is a python extention which provides custom RGBA/animated cursor management for Tkinter widgets. sK1 Team (http://sk1project.org), copyright (c) 2009 by Igor E. Novikov.
 			''',
 		classifiers=[
